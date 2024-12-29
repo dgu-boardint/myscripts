@@ -32,8 +32,3 @@ if ((gci WSMan:\localhost\Listener).Keys -contains "Transport=HTTPS") {
 else {
     Add-Content -Path C:\Temp\azureImageBuilderRestart.txt -Value 'No WinRM listener with HTTPS transport found on original image'
 }
-Start-Sleep -Seconds 5
-$file = "C:\DeprovisioningScript.ps1"
-if (Test-Path -Path $file){
-Remove-Item $file -Force
-}
