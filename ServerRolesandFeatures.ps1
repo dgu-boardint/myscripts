@@ -25,10 +25,3 @@ Set-ItemProperty IIS:\AppPools\B10ADMIN -name ProcessModel -value @{IdentityType
 Set-ItemProperty IIS:\AppPools\B10ADMIN -name Recycling.periodicRestart -value @{time = "00:00:00" }
 Set-ItemProperty IIS:\AppPools\B10ADMIN -name Recycling.periodicRestart.schedule -value @{value = "22:55" }
 $sm.CommitChanges()
-Start-Sleep -Seconds 5
-if ((gci WSMan:\localhost\Listener).Keys -contains "Transport=HTTPS") {
-    winrm delete winrm/config/Listener?Address=*+Transport=HTTPS
-}
-else {
-    Add-Content -Path C:\Temp\azureImageBuilderRestart.txt -Value 'No WinRM listener with HTTPS transport found on original image'
-}
