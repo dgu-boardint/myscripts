@@ -8,6 +8,8 @@ Start-Sleep -Seconds 5
 ##
 Remove-IISSite -Name "Default Web Site" -Confirm:$false
 Remove-WebAppPool -Name "DefaultAppPool" -Confirm:$false
+Remove-WebAppPool -Name ".NET v4.5 Classic" -Confirm:$false
+Remove-WebAppPool -Name ".NET v4.5" -Confirm:$false
 Remove-Item C:\inetpub\wwwroot\* -Recurse -Force
 ##
 Start-Sleep -Seconds 5
