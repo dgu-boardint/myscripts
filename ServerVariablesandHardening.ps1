@@ -54,3 +54,7 @@ New-Item -Name "Board" -Path "C:\" -ItemType Directory
 ##
 Stop-Service -name "Spooler" -force
 Set-Service -name "Spooler" -startupType "Disabled"
+##
+if ((Get-ComputerInfo).WindowsInstallationType -match "Server Core" ){
+    Add-WindowsCapability -Online -Name ServerCore.AppCompatibility
+}
